@@ -1,14 +1,44 @@
-{% block content %}
+
+
+  
+
+<div class="search_tour">
+        <div class="wrap">
+            <div class="wrap_float">
+                <div class="search_tour_form">
+                    <h2 class="section_subtitle">
+                        SEARCH TOUR
+                    </h2>
+                    <p class="section_title">
+                        Ready to rest? We are ready to help with the search
+                    </p>
+                    
     {{ form_start(form) }}
+                    <div class="fields__block">
+                        <div class="fields">
+                            <div class="field">
+                                <div class="label">Nom hotel</div>
+                                <div class="field_wrap keywords">
+                                    {{ form_row(form.q)}}
+                                </div>
+                            </div>
+                            <div class="field">
+                                
+                            </div>
+                            <div class="field">
+                                
+                            </div>
+                            <div class="field">
+                               
+                            </div>
+                            <div class="field">
+                                
+                            </div>
+                        </div>
+                        <button class="submit"></button>
+                    </div>
+                </div>  {{ form_end(form) }}
+            </div>
+        </div>
+    </div>
 
-    <h4> Recherche Hotel</h4>
-    {{ form_row(form.q)}}
-
-
-
-
-    <button type="submit" class="btn btn-primary w=100">Recherche </button>
-
-    {{ form_end(form) }}
-
-{% endblock %}

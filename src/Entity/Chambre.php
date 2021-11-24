@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use App\Repository\ChambreRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass=ChambreRepository::class)
@@ -18,22 +19,27 @@ class Chambre
     private $id;
 
     /**
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="integer",length=11, nullable=true)
+     * @Assert\NotBlank(message="champs vide")
      */
     private $nlits;
 
+
     /**
      * @ORM\Column(type="integer")
+     * @Assert\NotBlank (message="champs vide")
      */
     private $prix;
 
     /**
      * @ORM\Column(type="integer")
+     * @Assert\NotBlank (message="champs vide")
      */
     private $numero;
 
     /**
      * @ORM\Column(type="integer")
+     * @Assert\NotBlank (message="champs vide")
      */
     private $etage;
 
@@ -44,6 +50,7 @@ class Chambre
 
     /**
      * @ORM\ManyToOne(targetEntity=Hotel::class, inversedBy="chambres")
+     *  @Assert\Valid()
      */
     private $hotel;
 
@@ -64,14 +71,10 @@ class Chambre
     }
 
 
-
     public function getId(): ?int
     {
         return $this->id;
     }
-
-
-
 
 
     public function getPrix(): ?int

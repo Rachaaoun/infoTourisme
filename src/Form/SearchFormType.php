@@ -17,6 +17,7 @@ class SearchFormType extends AbstractType
             'label' => false,
             'required' => false,
             'attr' => [
+                'class'=>'input',
                 'placeholder' => 'Rechercher Hotel '
             ]
         ])

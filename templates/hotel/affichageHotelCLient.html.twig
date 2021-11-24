@@ -1,4 +1,4 @@
-
+{% extends 'baseClient.html.twig' %}
 
 {% block head %}
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -30,9 +30,12 @@
 
     {% endblock %}
 {% endblock %}
+            {% block search %}
+                        {% include 'hotel/_filtre.html.twig' with {form : form} only %}
+            {% endblock %}
+{% block content %}
 
-        {% block content %}
-{% include 'hotel/_filtre.html.twig' with {form : form} only %}
+           
 
             <table border="1">
                 <tr>
@@ -54,7 +57,7 @@
             </table>
 
 
-        {% endblock %}
+ {% endblock %}
 
 {% block javascripts %}
 
