@@ -20,26 +20,29 @@ class Chambre
 
     /**
      * @ORM\Column(type="integer",length=11, nullable=true)
-     * @Assert\NotBlank(message="champs vide")
+     * @Assert\NotBlank(message="ajouter le nombre de lit")
      */
     private $nlits;
-
+    /**
+     * @ORM\Column(type="integer")
+     */
+    private $rate;
 
     /**
      * @ORM\Column(type="integer")
-     * @Assert\NotBlank (message="champs vide")
+     * @Assert\NotBlank (message="ajouter le prix")
      */
     private $prix;
 
     /**
      * @ORM\Column(type="integer")
-     * @Assert\NotBlank (message="champs vide")
+     * @Assert\NotBlank (message="ajouter le numéro de chambre")
      */
     private $numero;
 
     /**
      * @ORM\Column(type="integer")
-     * @Assert\NotBlank (message="champs vide")
+     * @Assert\NotBlank (message="ajouter le numéro d'étage")
      */
     private $etage;
 
@@ -104,6 +107,18 @@ class Chambre
     public function getEtage(): ?int
     {
         return $this->etage;
+    }
+
+
+    public function getRate(): ?int
+    {
+        return $this->rate;
+    }
+
+
+    public function setRate($rate): void
+    {
+        $this->rate = $rate;
     }
 
     public function setEtage(int $etage): self

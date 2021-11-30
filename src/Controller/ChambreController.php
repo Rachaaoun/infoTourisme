@@ -34,6 +34,7 @@ class ChambreController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
             $Chambre->setIdH(0);
+            $Chambre->setRate(0);
             $em->persist($Chambre);
             $em->flush();
             $this->getDoctrine()->getManager()->flush();
@@ -77,6 +78,18 @@ class ChambreController extends AbstractController
         $em->flush();
 
         return $this->redirectToRoute('AfficheChambre');
+
+    }
+    /**
+     * @Route("/rate/{id}/{rate}",name="rate")
+     */
+    function Rate($id,$rate,ChambreRepository  $repository){
+        $Chambre=$repository->find($id);
+        $em=$this->getDoctrine()->getManager();
+        $Chambre->setRate($rate);
+        $em->flush();
+        return $this->redirectToRoute('AfficheChambreclient');
+
 
     }
     /**
