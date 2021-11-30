@@ -44,9 +44,15 @@ class Hotel
      */
     private $chambres;
 
+    /**
+     * @ORM\OneToMany(targetEntity=Images::class, mappedBy="hotel" ,cascade={"persist"})
+     */
+    private $images;
+
     public function __construct()
     {
         $this->chambres = new ArrayCollection();
+        $this->images = new ArrayCollection();
     }
 
 
@@ -128,6 +134,36 @@ class Hotel
             // set the owning side to null (unless already changed)
             if ($chambre->getHotel() === $this) {
                 $chambre->setHotel(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Images[]
+     */
+    public function getImages(): Collection
+    {
+        return $this->images;
+    }
+
+    public function addImage(Images $image): self
+    {
+        if (!$this->images->contains($image)) {
+            $this->images[] = $image;
+            $image->setHotel($this);
+        }
+
+        return $this;
+    }
+
+    public function removeImage(Images $image): self
+    {
+        if ($this->images->removeElement($image)) {
+            // set the owning side to null (unless already changed)
+            if ($image->getHotel() === $this) {
+                $image->setHotel(null);
             }
         }
 
